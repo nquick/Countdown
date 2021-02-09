@@ -1,6 +1,8 @@
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
-#include <SSD1306Wire.h>
+//#include <SSD1306Wire.h>
+//NQ - Changed to SSH1106 driver
+#include<SH1106.h>
 
 #define WIFI_SSID ""
 #define WIFI_PASSWORD ""
@@ -9,10 +11,13 @@
 #define ROW_HEIGHT 12
 #define FONT ArialMT_Plain_10
 #define DISPLAY_WIDTH 64
-#define NTP_SERVER "time.facebook.com"
+//NQ - Changed to UK time server that I use on my network 
+#define NTP_SERVER "0.uk.pool.ntp.org"
 #define UPDATE_INTERVAL 3600000
 
-SSD1306Wire display(0x3c, SDA, SCL, DISPLAY_GEOMETRY);
+//SSD1306Wire display(0x3c, SDA, SCL, DISPLAY_GEOMETRY);
+//NQ - Changed to SSH1106 driver
+SH1106 display(0x3C,SDA,SCL);
 WiFiUDP udp;
 IPAddress timeServerIP;
 int ntpPacketSize  = 48;
